@@ -1,0 +1,9 @@
+tensorflow
+keras
+numpy
+librosa
+pyaudio
+wave
+sklearn
+tkinter
+opencv-python
