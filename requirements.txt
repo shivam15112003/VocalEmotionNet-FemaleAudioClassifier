@@ -1,9 +1,10 @@
-tensorflow
+tensorflow>=2.9.0
 keras
-numpy
 librosa
+scikit-learn
+numpy
 pyaudio
+matplotlib
 wave
-sklearn
-tkinter
 opencv-python
+
