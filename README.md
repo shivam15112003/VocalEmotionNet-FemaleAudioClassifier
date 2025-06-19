@@ -1,48 +1,100 @@
-# 🎙️ Audio Emotion Detection
+# 🎙️ Female Voice Emotion Detection using VGG16 and GUI
 
-## 📌 Overview
-This project builds an **AI-powered emotion detection system for female audio recordings**, using **deep learning and signal processing**. The model classifies emotions like **happy, sad, angry, neutral**, etc., from voice inputs.
+This project implements a deep learning–based audio emotion detection system for **female speakers** using **Mel spectrograms** and **VGG16**, integrated with a real-time GUI for both file upload and voice recording.
 
-## 🚀 Features
-- **Real-time audio emotion detection** using deep learning.
-- **Pre-trained VGG16** model for feature extraction.
-- Supports **audio recording & file uploads** for emotion classification.
-- **Tkinter GUI** for a user-friendly experience.
-- Uses **Librosa** for feature extraction (MFCC & Mel Spectrogram).
+---
 
-## 🔧 Technologies Used
-- **Python**
-- **TensorFlow / Keras** (for deep learning and model training)
-- **Librosa** (for audio feature extraction)
-- **OpenCV** (for signal processing)
-- **Tkinter** (for GUI-based user interface)
-- **Pyaudio & Wave** (for audio recording and handling)
+## 📌 Features
 
-## 📂 Installation & Usage
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/shivam15112003/emotion_detection_femalevoice.git
-   cd emotion_detection_femalevoice
-   ```
+* 🎧 **Supports voice recording** and `.wav/.mp3` upload
+* 🔍 **Detects emotions** from female English voice input
+* 🧠 **Mel spectrogram** extraction using `librosa`
+* 🧩 **Transfer learning** with VGG16 (ImageNet)
+* 📊 Achieves \~94% test accuracy on 7-class emotional dataset
+* 🖥️ Real-time GUI built with `tkinter`
+* ⚠️ **Voice filtering** using pitch-based gender detection
+
+---
+
+## 📂 Dataset Structure
+
+Place your audio files into the following format under a `datasets` folder:
+
+```
+datasets/
+├── angry/
+├── disgust/
+├── fear/
+├── happy/
+├── neutral/
+├── pleasant/
+└── sad/
+```
+
+Each folder should contain `.wav` or `.mp3` files labeled by emotion.
+
+---
+
+## 🚀 How to Run
+
+1. Clone the repo:
+
+```bash
+git clone https://github.com/yourusername/female_voice_emotion_classifier.git
+cd female_voice_emotion_classifier
+```
+
 2. Install dependencies:
-   ```sh
-   pip install -r requirements.txt
-   ```
-3. Run the Jupyter Notebook:
-   ```sh
-   jupyter notebook emotion_detection_femalevoice_model.ipynb
-   ```
-4. Use the GUI to:
-   - **Upload audio files** for analysis.
-   - **Record live audio** and detect emotions.
-   - **View results** in a pop-up message.
 
-## 📈 Model Training Details
-- Uses **VGG16 pre-trained model** with additional dense layers.
-- Extracts **MFCC and Mel Spectrogram features** from audio.
-- Achieved **94% accuracy** on the validation dataset.
+```bash
+pip install -r requirements.txt
+```
 
-## 📈 Future Enhancements
-- Deploy as a **web-based application**.
-- Expand dataset for **better generalization**.
-- Optimize for **real-time mobile inference**.
+3. Run the script:
+
+```bash
+python female_voice_emotion_classifier.py
+```
+
+4. Use the GUI to upload or record audio
+
+---
+
+## 🎯 Model Details
+
+* Base Model: **VGG16** (frozen)
+* Custom head: Flatten → Dense(512) → Dropout → Dense(7)
+* Trained for 5 epochs on Mel spectrograms (resized to 224×224×3)
+* Preprocessing includes:
+
+  * Mel spectrogram
+  * Resizing
+  * 3-channel stacking
+* Female voice validated by pitch threshold (180–225 Hz)
+
+---
+
+## 📈 Performance
+
+* ✅ Test Accuracy: \~94%
+* ✅ Real-time prediction
+* ⚠️ Only processes **female** English voice
+
+---
+
+## 🛠 Dependencies
+
+* Python 3.7+
+* TensorFlow / Keras
+* Librosa
+* OpenCV / NumPy / Tkinter
+* pyaudio (for mic recording)
+
+---
+
+## 🙋 Author
+
+**Shivam Sharma**
+GitHub: [@shivam15112003](https://github.com/shivam15112003)
+
+Feel free to fork or contribute!
