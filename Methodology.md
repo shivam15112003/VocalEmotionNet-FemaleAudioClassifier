@@ -1,10 +1,10 @@
-##🧠 Methodology: Fine-Tuned Female English Voice Emotion Detection System
+## 🧠 Methodology: Fine-Tuned Female English Voice Emotion Detection System
 
 This document outlines the complete pipeline for developing an AI-based emotion detection system tailored to female English voice input, using deep learning, audio processing, fine-tuned VGG16, real-time gender & language verification, and a Tkinter GUI.
 
 ---
 
-##1️⃣ Data Collection & Organization
+## 1️⃣ Data Collection & Organization
 
 • Audio samples categorized into 7 emotions:
   - angry, disgust, fear, happy, neutral, pleasant, sad
@@ -13,7 +13,7 @@ This document outlines the complete pipeline for developing an AI-based emotion 
 
 ---
 
-##2️⃣ Feature Extraction (Audio to Image Conversion)
+## 2️⃣ Feature Extraction (Audio to Image Conversion)
 
 • Loaded audio files using librosa.load().
 • Computed Mel spectrograms to represent time-frequency patterns.
@@ -22,7 +22,7 @@ This document outlines the complete pipeline for developing an AI-based emotion 
 
 ---
 
-##3️⃣ Model Architecture & Transfer Learning with Fine-Tuning
+## 3️⃣ Model Architecture & Transfer Learning with Fine-Tuning
 
 • Used VGG16 pre-trained on ImageNet as base model.
 • Initially froze all VGG16 layers.
@@ -36,7 +36,7 @@ This document outlines the complete pipeline for developing an AI-based emotion 
 
 ---
 
-##4️⃣ Training & Evaluation
+## 4️⃣ Training & Evaluation
 
 • Encoded emotion labels using LabelEncoder and one-hot encoded using to_categorical.
 • Split dataset into 80% training and 20% testing using train_test_split.
@@ -45,7 +45,7 @@ This document outlines the complete pipeline for developing an AI-based emotion 
 
 ---
 
-##5️⃣ Real-Time Inference Pipeline
+## 5️⃣ Real-Time Inference Pipeline
 
 • Built an interactive GUI using Tkinter.
 • Two input modes supported:
@@ -62,7 +62,7 @@ This document outlines the complete pipeline for developing an AI-based emotion 
 
 ---
 
-##6️⃣ Constraints & Assumptions
+## 6️⃣ Constraints & Assumptions
 
 • The system strictly accepts female voices speaking English.
 • Filters out male, non-English, or very high-pitched voices to maintain accuracy.
@@ -70,7 +70,7 @@ This document outlines the complete pipeline for developing an AI-based emotion 
 
 ---
 
-##✅ Outcome
+## ✅ Outcome
 
 • Fully integrated real-time fine-tuned emotion detection system.
 • Achieved improved test accuracy (~95%) after fine-tuning VGG16.
