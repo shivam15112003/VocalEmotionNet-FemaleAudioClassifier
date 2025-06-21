@@ -88,11 +88,7 @@ model = tf.keras.models.load_model("emotion_model.h5")
 # GUI functions
 
 def classify_audio(file_path):
-    y, sr = librosa.load(file_path)
-    mels = librosa.feature.melspectrogram(y=y, sr=sr)
-    mels_resized = tf.image.resize(mels[..., np.newaxis], (224, 224)).numpy()
-    mels_rgb = np.repeat(mels_resized[np.newaxis, ...], 3, axis=-1)
-
+    mels_rgb=extract_features(file_path)
     # Gender filtering using pitch
     pitches, magnitudes = librosa.piptrack(y=y, sr=sr)
     avg_pitch = np.mean(pitches[np.nonzero(pitches)])
