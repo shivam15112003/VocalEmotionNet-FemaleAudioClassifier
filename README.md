@@ -1,100 +1,96 @@
-# 🎙️ Female Voice Emotion Detection using VGG16 and GUI
+# 🎯 Female English Voice Emotion Detection System (Fine-Tuned)
 
-This project implements a deep learning–based audio emotion detection system for **female speakers** using **Mel spectrograms** and **VGG16**, integrated with a real-time GUI for both file upload and voice recording.
+This project implements a fully automated real-time **audio emotion detection system** designed for **female English voices**, combining:
 
----
-
-## 📌 Features
-
-* 🎧 **Supports voice recording** and `.wav/.mp3` upload
-* 🔍 **Detects emotions** from female English voice input
-* 🧠 **Mel spectrogram** extraction using `librosa`
-* 🧩 **Transfer learning** with VGG16 (ImageNet)
-* 📊 Achieves \~94% test accuracy on 7-class emotional dataset
-* 🖥️ Real-time GUI built with `tkinter`
-* ⚠️ **Voice filtering** using pitch-based gender detection
+- 🎙 Audio Processing (Mel Spectrograms)
+- 🧠 Deep Learning (VGG16 with Fine-Tuning)
+- 🎯 Gender & Language Verification (Pitch + SpeechBrain)
+- 🖥 Interactive GUI (Tkinter)
+- 🎯 Real-Time Microphone & File Upload Support
 
 ---
 
-## 📂 Dataset Structure
-
-Place your audio files into the following format under a `datasets` folder:
+## 🔧 Project Structure
 
 ```
 datasets/
-├── angry/
-├── disgust/
-├── fear/
-├── happy/
-├── neutral/
-├── pleasant/
-└── sad/
+    angry/
+    disgust/
+    fear/
+    happy/
+    neutral/
+    pleasant/
+    sad/
+emotion_model.h5 (Generated after training)
+main.py (Full code)
+requirements.txt
+README.md
 ```
-
-Each folder should contain `.wav` or `.mp3` files labeled by emotion.
 
 ---
 
-## 🚀 How to Run
+## ⚙ Key Features
 
-1. Clone the repo:
+- ✅ Fine-tuned VGG16 using top 20 unfrozen layers on Mel Spectrogram images.
+- ✅ Gender filtering using pitch analysis via Librosa.
+- ✅ Language detection using SpeechBrain (supports multiple languages).
+- ✅ Real-time microphone recording (5 seconds) or file upload.
+- ✅ Fully integrated Tkinter GUI for interactive prediction.
 
-```bash
-git clone https://github.com/yourusername/female_voice_emotion_classifier.git
-cd female_voice_emotion_classifier
+---
+
+## 🏗 Model Architecture
+
+- **Base Model:** VGG16 (pretrained on ImageNet)
+- **Fine-Tuning:** Top 20 layers unfrozen
+- **Classifier Head:** Flatten → Dense(512, relu) → Dropout(0.5) → Dense(7, softmax)
+- **Optimizer:** Adam (learning rate = 1e-5)
+- **Loss:** categorical_crossentropy
+
+---
+
+## 🏃‍♂️ How to Run
+
+1️⃣ Install dependencies:
+
 ```
-
-2. Install dependencies:
-
-```bash
 pip install -r requirements.txt
 ```
 
-3. Run the script:
+2️⃣ Prepare your dataset following the folder structure mentioned above.
 
-```bash
-python female_voice_emotion_classifier.py
+3️⃣ Run the system:
+
+```
+python main.py
 ```
 
-4. Use the GUI to upload or record audio
+- If `emotion_model.h5` doesn't exist, the system will automatically train it first.
 
 ---
 
-## 🎯 Model Details
+## 📈 Accuracy Achieved
 
-* Base Model: **VGG16** (frozen)
-* Custom head: Flatten → Dense(512) → Dropout → Dense(7)
-* Trained for 5 epochs on Mel spectrograms (resized to 224×224×3)
-* Preprocessing includes:
+- Test Accuracy: ~95% after fine-tuning.
+- Increased robustness with gender & language filtering.
 
-  * Mel spectrogram
-  * Resizing
-  * 3-channel stacking
-* Female voice validated by pitch threshold (180–225 Hz)
 
 ---
 
-## 📈 Performance
+## 💡 Technologies Used
 
-* ✅ Test Accuracy: \~94%
-* ✅ Real-time prediction
-* ⚠️ Only processes **female** English voice
-
----
-
-## 🛠 Dependencies
-
-* Python 3.7+
-* TensorFlow / Keras
-* Librosa
-* OpenCV / NumPy / Tkinter
-* pyaudio (for mic recording)
+- TensorFlow / Keras
+- Librosa
+- SpeechBrain (for language detection)
+- Tkinter (GUI)
+- Pyaudio (for recording)
 
 ---
 
-## 🙋 Author
+## 🔒 License
 
-**Shivam Sharma**
-GitHub: [@shivam15112003](https://github.com/shivam15112003)
+This project is for academic and research purposes only.
 
-Feel free to fork or contribute!
+---
+
+✅ **Author:** Shivam Sharma (2025)
